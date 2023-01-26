@@ -1,0 +1,18 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Workers detials
+{% endblock %}
+
+{% block content %}
+    <h1>{{ workerList.firstname }} {{ workerList.lastname }}</h1>
+    <p>Profession: {{ workerList.profession }}</p>
+    <p>Birth date: {{ workerList.birth_date }}</p>
+    <p>Phone: {{ workerList.phone_number }}</p>
+    <p>E-mail: {{ workerList.e_mail }}</p>
+
+    <p><a href="edit_worker/{{ workerList.id }}">Edit worker</a></p>
+    <p><a href="/workers">Back to workers list</a></p>
+
+{% endblock %}
+

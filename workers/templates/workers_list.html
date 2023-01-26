@@ -1,0 +1,18 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Workers
+{% endblock %}
+
+{% block content %}
+  <h1>Workers list:</h1>
+  <ul>
+    {% for x in workerList %}
+    <div>
+      <li>{{ x.id }}. <a href="details/{{ x.id }}">{{ x.firstname }} {{ x.lastname }}</a></li>
+      <a href="{% url 'delete' id=x.id %}">Delete</a>
+    </div>
+    {% endfor %}
+  </ul>
+  <p><a href="add_worker/">Add worker</a></p>
+{% endblock %}
