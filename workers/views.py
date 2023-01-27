@@ -111,12 +111,18 @@ def add_worker(request):
                                        profession=profession,
                                        birth_date=birth_date,
                                        phone_number=phone_number,
-                                       email=email)
+                                       e_mail=email)
         worker.save()
         return redirect('workers')
     return render(request, 'add_worker.html')
 
 def edit_worker(request, id):
+    template = loader.get_template('edit_worker.html')
+    myWorker = Worker.objects.get(id=id)
+    context = {
+        'myWorker': myWorker
+    }
+
     if request.method == 'POST':
         worker = Worker.objects.get(id=id)
         worker.firstname = request.POST['firstname']
@@ -127,4 +133,4 @@ def edit_worker(request, id):
         worker.email = request.POST['email']
         worker.save()
         return redirect('details', id=id)
-    return render(request, 'edit_worker.html')
+    return HttpResponse(template.render(context, request))
